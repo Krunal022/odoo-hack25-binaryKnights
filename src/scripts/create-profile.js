@@ -1,6 +1,9 @@
 document.getElementById('profileForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
+  const reader = new FileReader();
+  const imageFile = document.getElementById('photo').files[0]; // your input is id="photo"
+
   const profileData = {
     fullName: document.getElementById('fullName').value,
     location: document.getElementById('location').value,
@@ -10,11 +13,25 @@ document.getElementById('profileForm').addEventListener('submit', function (e) {
     availability: document.getElementById('availability').value,
     publicProfile: document.getElementById('publicProfile').checked,
     bio: document.getElementById('bio').value,
+    profileImage: '' // This will hold the base64 image
   };
 
-  // Optional: Handle profile image later with FileReader if needed
-  localStorage.setItem('userProfile', JSON.stringify(profileData));
-
-  alert('Profile Created Successfully!');
-  window.location.href = '../index.html'; // Redirect to homepage after saving
+  if (imageFile) {
+    reader.onload = function () {
+      profileData.profileImage = reader.result;
+      saveAndRedirect(profileData);
+    };
+    reader.readAsDataURL(imageFile);
+  } else {
+    saveAndRedirect(profileData);
+  }
 });
+
+function saveAndRedirect(profileData) {
+  const allProfiles = JSON.parse(localStorage.getItem('userProfiles')) || [];
+  allProfiles.push(profileData);
+  localStorage.setItem('userProfiles', JSON.stringify(allProfiles));
+  localStorage.setItem('profileCreated', 'true');
+  alert('Profile Created Successfully!');
+  window.location.href = 'browse-users.html';
+}

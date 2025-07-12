@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0e0e10;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.profile-card {
+  background: #1a1a1d;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.profile-card:hover {
+  transform: scale(1.02);
+}
+
+.profile-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.profile-content {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.profile-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: white;
+}
+
+.profile-role {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0.4rem 0 1rem;
+}
+
+.profile-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+.profile-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.follow-btn {
+  background: white;
+  color: black;
+  padding: 0.4rem 1.2rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.follow-btn:hover {
+  background: #00b894;
+  color: white;
+}
+
+

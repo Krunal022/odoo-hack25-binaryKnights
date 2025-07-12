@@ -7,6 +7,10 @@ const userProfile = document.getElementById('userProfile');
 const authButtons = document.getElementById('authButtons');
 const logoutBtn = document.getElementById('logoutBtn');
 const usernameGreet = document.getElementById('usernameGreet');
+const createProfileBtn = document.getElementById('createProfileBtn');
+
+// LocalStorage Arrays
+let users = JSON.parse(localStorage.getItem('users')) || [];
 
 // Show Modals
 signupBtn.onclick = () => signupModal.style.display = 'flex';
@@ -20,31 +24,36 @@ closeButtons.forEach(btn => {
     };
 });
 
-// Sign Up
+// Sign Up Logic
 document.getElementById('signupSubmit').onclick = () => {
     const username = document.getElementById('signupUsername').value;
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
     const role = document.getElementById('signupRole').value;
 
-    if (!username || !email || !password) return alert('Fill all fields');
+    if (!username || !email || !password) return alert('Please fill all fields.');
 
-    const user = { username, email, password, role };
-    localStorage.setItem('user', JSON.stringify(user));
+    const alreadyExists = users.some(user => user.email === email);
+    if (alreadyExists) return alert('User already exists with this email.');
+
+    const newUser = { username, email, password, role };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
     alert('Signup successful!');
     signupModal.style.display = 'none';
     updateAuthUI();
 };
 
-// Login
+// Login Logic
 document.getElementById('loginSubmit').onclick = () => {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-
-    if (savedUser && savedUser.email === email && savedUser.password === password) {
-        alert(`Welcome ${savedUser.username}!`);
+    const foundUser = users.find(user => user.email === email && user.password === password);
+    if (foundUser) {
+        localStorage.setItem('currentUser', JSON.stringify(foundUser));
+        alert(`Welcome ${foundUser.username}!`);
         loginModal.style.display = 'none';
         updateAuthUI();
     } else {
@@ -52,43 +61,25 @@ document.getElementById('loginSubmit').onclick = () => {
     }
 };
 
-// On Load: Check if logged in
+// Logout Logic
+logoutBtn.onclick = () => {
+    localStorage.removeItem('currentUser');
+    updateAuthUI();
+};
+
+// Check Login State on Page Load
 document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI();
 });
 
-// Logout
-logoutBtn.onclick = () => {
-    localStorage.removeItem('user');
-    updateAuthUI();
-};
-
-// Update UI
+// Update UI based on Auth State
 function updateAuthUI() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    if (user) {
+    if (currentUser) {
         authButtons.style.display = 'none';
         userProfile.style.display = 'block';
-        usernameGreet.textContent = `Hi, ${user.username}!`;
-        loginModal.style.display = 'none';
-        signupModal.style.display = 'none';
-    } else {
-        authButtons.style.display = 'flex';
-        userProfile.style.display = 'none';
-        usernameGreet.textContent = '';
-        loginModal.style.display = 'none';
-        signupModal.style.display = 'none';
-    }
-}
-function updateAuthUI() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const createProfileBtn = document.getElementById('createProfileBtn');
-
-    if (user) {
-        authButtons.style.display = 'none';
-        userProfile.style.display = 'block';
-        usernameGreet.textContent = `Hi, ${user.username}!`;
+        usernameGreet.textContent = `Hi, ${currentUser.username}!`;
         createProfileBtn.style.display = 'inline-block';
         loginModal.style.display = 'none';
         signupModal.style.display = 'none';
