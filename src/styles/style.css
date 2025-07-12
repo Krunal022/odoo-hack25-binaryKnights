@@ -1,16 +1,624 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #333333;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: gilroy;
+    font-family: syne;
 }
+
 html,
 body {
+    width: 100%;
     height: 100%;
+}
+
+body {
+    padding: 1rem;
+    font-family: chillax;
+}
+
+body p {
+    font-family: gilroy;
+}
+
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --link-color: #dddddd;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav,
+nav .links a,
+h1,
+h2,
+h6,
+p,
+button {
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+    .links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+    }
+}
+
+main {
+    width: 100%;
+    border: 1.58px solid rgba(0, 0, 0, 0.824);
+    padding: 1rem;
+}
+
+nav {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 0 1.5rem;
+}
+
+nav a {
+    font-size: 2.2rem;
+    color: black;
+    text-decoration: none;
+}
+
+nav .links {
+    display: none;
+}
+
+nav button {
+    border-radius: 1rem;
+    border: 0.5px solid rgb(74, 74, 74);
+    background-color: transparent;
+    padding: 0.5rem 1.5rem;
+}
+
+hr {
+    margin: 1.5rem 0;
+}
+
+.view-1 {
+    padding: 0 1rem;
+    width: 100%;
+    gap: 1.33rem;
+    flex-direction: column;
+    display: flex;
+}
+
+.view-1 .text h6 {
+    font-family: gilroy;
+    margin-top: 1.33rem;
+    color: rgba(0, 0, 0, 0.836);
+    font-weight: 400;
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
+.view-1 .text h1 {
+    line-height: 0.95;
+    letter-spacing: 0.8;
+    font-weight: 400;
+    width: 100%;
+    font-size: 3rem;
+}
+
+.view-1 .video {
+    aspect-ratio: 1/1;
     width: 100%;
 }
-#main{
-    width: 100%;
+
+.view-1 .video video {
+    border-radius: 1rem;
     height: 100%;
-    background-color: #111;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+}
+
+.view-2 {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+}
+
+.view-2 .top-heading {
+    flex-direction: column;
+    display: flex;
+    gap: 1.2rem;
+}
+
+.view-2 .top-heading p {
+    opacity: 0.2;
+    font-weight: 900;
+    font-size: 1.22rem;
+}
+
+.view-2 .top-heading h1 {
+    line-height: 0.95;
+    letter-spacing: 0.8;
+    font-weight: 400;
+    width: 90%;
+    font-size: 2.7rem;
+}
+
+.view-2 .top-heading button {
+    border-radius: 0.8rem;
+    width: 7rem;
+    margin-top: 2rem;
+    border: 0.3rem;
+    color: rgb(253, 216, 147);
+    background-color: black;
+    padding: 0.8rem;
+}
+
+.view-2 .bottom-heading {
+    margin-top: 1.5rem;
+}
+
+.view-2 .bottom-heading p {
+    letter-spacing: -5;
+    line-height: 0.99;
+    color: rgba(0, 0, 0, 0.767);
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.view-2 .bottom-heading h1 {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.view-2 .bottom-heading img {
+    border-radius: 1rem;
+    height: auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 90%;
+}
+
+.view-3 {
+    padding: 1rem;
+    width: 100%;
+}
+
+.view-3 .text p {
+    opacity: 0.2;
+    font-weight: 900;
+    font-size: 1.22rem;
+}
+
+.view-3 .text h1 {
+    margin-top: 1rem;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    font-weight: 400;
+    width: 100%;
+    font-size: 3rem;
+}
+
+.view-3 h2 {
+    font-family: gilroy;
+    margin-top: 1.33rem;
+    color: rgba(0, 0, 0, 0.731);
+    font-weight: 400;
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
+.view-4 {
+    width: 100%;
+    padding: 1rem;
+}
+
+.view-4 .leftside h1 {
+    display: none;
+}
+
+.view-4 .rightside {
+    margin-top: -2rem;
+}
+
+.view-4 .rightside img {
+    width: 100px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    height: auto;
+}
+
+.view-4 .rightside h1 {
+    font-weight: 300;
+    margin: 0.5rem 0;
+    font-size: 2rem;
+}
+
+.view-4 .rightside p {
+    color: rgba(0, 0, 0, 0.772);
+    font-size: 1.22rem;
+}
+
+footer {
+    padding: 1rem;
+    width: 100%;
+    gap: 1rem;
+    flex-direction: column;
+    display: flex;
+}
+
+footer .fylla .button {
+    align-items: center;
+    margin-top: 6rem;
+    display: flex;
+}
+
+footer .fylla .button p {
+    height: 2.5rem;
+    width: 2.5rem;
+    text-align: center;
+    padding: 0.5rem;
+    margin-right: 2rem;
+    border-radius: 50%;
+    border: 1px solid black;
+    font-weight: 400;
+}
+
+footer .Pages button {
+    color: white;
+    background-color: black;
+    margin-top: 2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 0.6rem 2rem;
+}
+
+footer h1 {
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    margin-top: 0.3rem;
+    margin: 1.6rem 0;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+footer .row {
+    width: auto;
+    height: 1.5px;
+    background-color: #363535;
+}
+
+@media (min-width: 1020px) {
+    nav {
+        padding: 1.5rem 3rem;
+    }
+
+    nav html {
+        font-size: clamp(16px, 1vw, 20px);
+    }
+
+    nav a {
+        font-size: 3rem;
+        text-decoration: none;
+        color: black;
+    }
+
+    nav .moon {
+        display: none;
+    }
+
+    nav .links {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    nav .links a {
+        font-size: 1.2rem;
+        margin-right: 2rem;
+        font-weight: 500;
+        font-family: gilroy;
+        color: black;
+        text-decoration: none;
+    }
+
+    nav .links button {
+        color: white;
+        background-color: black;
+        border-radius: 10px;
+        margin-right: 2rem;
+        padding: 1rem 4rem;
+        text-wrap: nowrap;
+    }
+}
+
+@media (min-width: 1020px) {
+    html {
+        font-size: clamp(16px, 1vw, 20px);
+    }
+
+    .view-1 {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .view-1 .text {
+        width: 60%;
+    }
+
+    .view-1 .text h6 {
+        color: rgba(0, 0, 0, 0.785);
+        font-size: 1.7rem;
+        font-weight: 100;
+        width: 70%;
+    }
+
+    .view-1 .text h1 {
+        font-size: 6.5rem;
+        font-weight: 100;
+        opacity: 0.9;
+    }
+
+    .view-1 .video {
+        aspect-ratio: 1/1;
+        width: 50%;
+    }
+
+    .view-1 .video video {
+        width: 100%;
+        -o-object-position: center;
+        object-position: center;
+        -o-object-fit: cover;
+        object-fit: cover;
+        height: 100%;
+    }
+}
+
+@media (min-width: 1020px) {
+    html {
+        font-size: clamp(16px, 1vw, 20px);
+    }
+
+    .view-2 {
+        display: flex;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .view-2 .top-heading {
+        width: 60%;
+        position: sticky;
+        padding-top: 2rem;
+        top: 0;
+        flex-direction: column;
+        height: 80vh;
+        display: flex;
+    }
+
+    .view-2 .top-heading p {
+        opacity: 0.2;
+        font-weight: 900;
+        font-size: 1.22rem;
+    }
+
+    .view-2 .top-heading h1 {
+        font-weight: normal;
+        line-height: 5.2vw;
+        width: 100%;
+        font-size: 6.5rem;
+        font-weight: 100;
+        opacity: 0.9;
+    }
+
+    .view-2 .top-heading button {
+        cursor: pointer;
+        height: 3rem;
+        width: 20rem;
+        margin-top: auto;
+    }
+
+    .view-2 .row {
+        height: 235vh;
+        background-color: #dadada;
+        width: 1.5px;
+        margin: 0 2rem;
+    }
+
+    .view-2 .bottom-heading {
+        flex-direction: column;
+        gap: 1.2rem;
+        display: flex;
+        width: 40%;
+    }
+
+    .view-2 .bottom-heading p {
+        color: rgba(0, 0, 0, 0.808);
+        margin-top: 1rem;
+    }
+
+    .view-2 .bottom-heading .row {
+        background-color: rgba(0, 0, 0, 0.801);
+        height: 1px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1020px) {
+    html {
+        font-size: clamp(16px, 1vw, 20px);
+    }
+
+    .view-3 {
+        display: flex;
+    }
+
+    .view-3 .text {
+        width: 100%;
+    }
+
+    .view-3 .text p {
+        opacity: 0.2;
+        font-weight: 900;
+        font-size: 1.22rem;
+    }
+
+    .view-3 .text h1 {
+        line-height: 5.8vw;
+        width: 80%;
+        font-size: 6.5rem;
+        font-weight: 100;
+        opacity: 0.9;
+    }
+
+    .view-3 h2 {
+        width: 40%;
+        line-height: -5px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1020px) {
+    html {
+        font-size: clamp(16px, 1vw, 20px);
+    }
+
+    .view-4 {
+        width: 100%;
+        display: flex;
+    }
+
+    .view-4 .leftside {
+        width: 60%;
+    }
+
+    .view-4 .leftside h1 {
+        display: block;
+        font-weight: 200;
+        color: rgba(0, 0, 0, 0.852);
+        font-size: 3rem;
+    }
+
+    .view-4 .row {
+        margin: 0 2rem;
+        background-color: #dadada;
+        width: 2.5px;
+        height: initial;
+    }
+
+    .view-4 .rightside {
+        display: flex;
+    }
+
+    .view-4 .rightside .elem {
+        margin: 2rem;
+    }
+
+    .view-4 .rightside .upper .row {
+        background-color: #dadada;
+        height: 1.5px;
+        margin-top: 1rem;
+        width: initial;
+    }
+
+    .view-4 .rightside .lower .row {
+        background-color: #dadada;
+        height: 1.5px;
+        margin-top: 1rem;
+        width: initial;
+    }
+
+    .view-4 hr {
+        display: none;
+    }
+}
+
+@media (min-width: 1020px) {
+    html {
+        font-size: clamp(16px, 1vw, 20px);
+    }
+
+    footer {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    footer .fylla {
+        width: 30%;
+    }
+
+    footer .fylla .button p:hover {
+        text-align: center;
+        font-style: normal;
+        color: white;
+        background-color: black;
+    }
+
+    footer .fylla h1 {
+        font-weight: 900;
+    }
+
+    footer .fylla .rowi {
+        display: none;
+    }
+
+    footer p {
+        transition: all cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    footer p:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    footer .Pages button {
+        margin-top: 1rem;
+        border-radius: 10px;
+        padding: 0.4rem 1.5rem;
+    }
+
+    footer .rowi {
+        background-color: #dadada;
+        width: 1px;
+        height: 20rem;
+    }
 }
