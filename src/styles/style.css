@@ -39,6 +39,59 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+nav .profile {
+    display: none;
+    background: white;
+    color: black;
+    border-radius: 50%;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    /* to stay above */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    /* High z-index to stay on top */
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    /* z-index: 99; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 300px;
+}
+
+.modal-content input,
+.modal-content select {
+    /* z-index: 99; */
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.modal-content button {
+    /* z-index: 99; */
+    padding: 0.5rem;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
 nav,
 nav .links a,
 h1,
@@ -362,7 +415,7 @@ footer .row {
         gap: .2rem;
     }
 
-    nav .links .buttons .signup {
+    nav .links .buttons .signup-btn {
         cursor: pointer;
         font-size: 1.2rem;
         border: none;
@@ -370,7 +423,7 @@ footer .row {
         text-wrap: nowrap;
     }
 
-    nav .links .buttons .login {
+    nav .links .buttons .login-btn {
         cursor: pointer;
         color: white;
         background-color: black;
