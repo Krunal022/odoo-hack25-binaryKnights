@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Skill Swap</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f0f2f5;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      color: #333;
+    }
+    .entry {
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+    }
+    .entry p { margin: 0 0 8px 0; }
+    .btn-group { display: flex; gap: 10px; }
+    .btn {
+      padding: 6px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .btn-success { background-color: #27ae60; color: white; }
+    .btn-danger { background-color: #e74c3c; color: white; }
+    .btn-warning { background-color: #f39c12; color: white; }
+    .btn:hover { opacity: 0.9; }
+    textarea, select, input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>Skill Swap - Admin Dashboard</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Pending Skill Descriptions</h2>
+    <div id="pendingDescriptions"></div>
+  </div>
+
+  <div class="card">
+    <h2>Swap Requests</h2>
+    <div id="swapRequests"></div>
+  </div>
+
+  <div class="card">
+    <h2>User Violations</h2>
+    <label for="banUser">Select User to Ban:</label>
+    <select id="banUser"></select>
+    <button class="btn btn-danger" onclick="banUser()">Ban User</button>
+  </div>
+
+  <div class="card">
+    <h2>Send Platform Message</h2>
+    <textarea id="platformMessage" placeholder="Write a message to all users..."></textarea>
+    <button class="btn btn-warning" onclick="sendMessage()">Send Message</button>
+  </div>
+
+  <div class="card">
+    <h2>Download Reports</h2>
+    <button class="btn" onclick="downloadReport('activity')">User Activity Report</button><br>
+    <button class="btn" onclick="downloadReport('feedback')">Feedback Logs</button><br>
+    <button class="btn" onclick="downloadReport('swapStats')">Swap Stats</button>
+  </div>
+
+</div>
+
+<script>
+  const pendingDescriptions = JSON.parse(localStorage.getItem('pendingSkills')) || [];
+  const swapRequests = JSON.parse(localStorage.getItem('swapRequests')) || [];
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+
+  function renderPendingSkills() {
+    const container = document.getElementById('pendingDescriptions');
+    if (pendingDescriptions.length === 0) return container.innerHTML = '<p>No pending skills found.</p>';
+    container.innerHTML = '';
+    pendingDescriptions.forEach((skill, i) => {
+      container.innerHTML += `
+        <div class="entry">
+          <p><strong>${skill.username}:</strong> "${skill.description}"</p>
+          <div class="btn-group">
+            <button class="btn btn-success" onclick="approveSkill(${i})">Approve</button>
+            <button class="btn btn-danger" onclick="rejectSkill(${i})">Reject</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function renderSwapRequests() {
+    const container = document.getElementById('swapRequests');
+    if (swapRequests.length === 0) return container.innerHTML = '<p>No swap requests found.</p>';
+    container.innerHTML = '';
+    swapRequests.forEach((swap, i) => {
+      container.innerHTML += `
+        <div class="entry">
+          <p><strong>${swap.from} ↔ ${swap.to}</strong>: ${swap.skill}</p>
+          <div class="btn-group">
+            <button class="btn btn-success" onclick="approveSwap(${i})">Accept</button>
+            <button class="btn btn-danger" onclick="rejectSwap(${i})">Reject</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function populateBanList() {
+    const select = document.getElementById('banUser');
+    users.forEach(user => {
+      const option = document.createElement('option');
+      option.value = user.username;
+      option.textContent = user.username;
+      select.appendChild(option);
+    });
+  }
+
+  function approveSkill(index) {
+    alert(`✅ Approved: ${pendingDescriptions[index].username}`);
+    pendingDescriptions.splice(index, 1);
+    localStorage.setItem('pendingSkills', JSON.stringify(pendingDescriptions));
+    renderPendingSkills();
+  }
+
+  function rejectSkill(index) {
+    alert(`❌ Rejected: ${pendingDescriptions[index].username}`);
+    pendingDescriptions.splice(index, 1);
+    localStorage.setItem('pendingSkills', JSON.stringify(pendingDescriptions));
+    renderPendingSkills();
+  }
+
+  function approveSwap(index) {
+    alert(`✅ Swap approved: ${swapRequests[index].from} ↔ ${swapRequests[index].to}`);
+    swapRequests.splice(index, 1);
+    localStorage.setItem('swapRequests', JSON.stringify(swapRequests));
+    renderSwapRequests();
+  }
+
+  function rejectSwap(index) {
+    alert(`❌ Swap rejected: ${swapRequests[index].from} ↔ ${swapRequests[index].to}`);
+    swapRequests.splice(index, 1);
+    localStorage.setItem('swapRequests', JSON.stringify(swapRequests));
+    renderSwapRequests();
+  }
+
+  function banUser() {
+    const user = document.getElementById("banUser").value;
+    alert(`🔒 ${user} has been banned.`);
+  }
+
+  function sendMessage() {
+    const msg = document.getElementById("platformMessage").value.trim();
+    if (!msg) return alert("Please enter a message.");
+    alert("📢 Message sent to all users.");
+  }
+
+  function downloadReport(type) {
+    alert(`📄 Downloading ${type} report...`);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderPendingSkills();
+    renderSwapRequests();
+    populateBanList();
+  });
+</script>
+
+</body>
+</html>

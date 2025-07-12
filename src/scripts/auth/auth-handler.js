@@ -9,7 +9,7 @@ const logoutBtn = document.getElementById('logoutBtn');
 const usernameGreet = document.getElementById('usernameGreet');
 const createProfileBtn = document.getElementById('createProfileBtn');
 
-// LocalStorage Arrays
+// Get or Initialize Users Array
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 // Show Modals
@@ -31,18 +31,38 @@ document.getElementById('signupSubmit').onclick = () => {
     const password = document.getElementById('signupPassword').value;
     const role = document.getElementById('signupRole').value;
 
-    if (!username || !email || !password) return alert('Please fill all fields.');
+    if (!username || !email || !password) {
+        alert('Please fill all fields.');
+        return;
+    }
 
     const alreadyExists = users.some(user => user.email === email);
-    if (alreadyExists) return alert('User already exists with this email.');
+    if (alreadyExists) {
+        alert('User already exists with this email.');
+        return;
+    }
 
     const newUser = { username, email, password, role };
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+    // Add pending skill entry for admin dashboard
+    const pendingSkills = JSON.parse(localStorage.getItem('pendingSkills')) || [];
+    pendingSkills.push({
+        username: username,
+        description: `${username} just signed up. No skill description yet.`
+    });
+    localStorage.setItem('pendingSkills', JSON.stringify(pendingSkills));
+
     alert('Signup successful!');
     signupModal.style.display = 'none';
     updateAuthUI();
+
+    // Redirect to admin if admin
+    if (newUser.role === 'admin') {
+        window.location.href = 'admin.html';
+    }
 };
 
 // Login Logic
@@ -56,6 +76,10 @@ document.getElementById('loginSubmit').onclick = () => {
         alert(`Welcome ${foundUser.username}!`);
         loginModal.style.display = 'none';
         updateAuthUI();
+
+        if (foundUser.role === 'admin') {
+            window.location.href = 'admin.html';
+        }
     } else {
         alert('Invalid email or password');
     }
@@ -67,12 +91,12 @@ logoutBtn.onclick = () => {
     updateAuthUI();
 };
 
-// Check Login State on Page Load
+// On Load
 document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI();
 });
 
-// Update UI based on Auth State
+// Update UI Based on Auth
 function updateAuthUI() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 

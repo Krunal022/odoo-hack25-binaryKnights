@@ -9,59 +9,48 @@
   <body>
     <main>
       <nav>
-  <h1>SkillBridge</h1>
-
-  <div class="hamburger" id="hamburger">&#9776;</div>
-
-  <div class="links" id="navLinks">
-    <a href="#services">HOW IT WORKS</a>
-    <a href="/src/pages/browse-users.html">BROWSE USERS</a>
-    <a href="#create">CREATE PROFILE</a>
-    <a href="#feedback">FEEDBACK</a>
-    <a href="#about">ABOUT</a>
-
-    <div class="buttons" id="authButtons">
-      <button class="signup-btn">Sign Up</button>
-      <button class="login-btn">Login</button>
-    </div>
-
-    <div class="profile" id="userProfile">
-      <button id="logoutBtn">Logout</button>
-    </div>
-  </div>
-</nav>
-
-
-  <!-- Signup Modal -->
-  <div class="modal" id="signupModal">
-    <div class="modal-content">
-      <h2>Sign Up</h2>
-      <input type="text" placeholder="Username" id="signupUsername" />
-      <input type="email" placeholder="Email" id="signupEmail" />
-      <input type="password" placeholder="Password" id="signupPassword" />
-      <select id="signupRole">
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
-      </select>
-      <button id="signupSubmit">Register</button>
-      <button class="close">Close</button>
-    </div>
-  </div>
-
-  <!-- Login Modal -->
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-      <h2>Login</h2>
-      <input type="email" placeholder="Email" id="loginEmail" />
-      <input type="password" placeholder="Password" id="loginPassword" />
-      <button id="loginSubmit">Login</button>
-      <button class="close">Close</button>
-    </div>
-  </div>
+        <h1>SkillBridge</h1>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <div class="links" id="navLinks">
+          <a href="#services">HOW IT WORKS</a>
+          <a href="/src/pages/browse-users.html">BROWSE USERS</a>
+          <a href="#create">CREATE PROFILE</a>
+          <a href="#feedback">FEEDBACK</a>
+          <a href="#about">ABOUT</a>
+          <div class="buttons" id="authButtons">
+            <button class="signup-btn">Sign Up</button>
+            <button class="login-btn">Login</button>
+          </div>
+          <div class="profile" id="userProfile">
+            <button id="logoutBtn">Logout</button>
+          </div>
         </div>
       </nav>
 
-      <hr />
+      <div class="modal" id="signupModal">
+        <div class="modal-content">
+          <h2>Sign Up</h2>
+          <input type="text" placeholder="Username" id="signupUsername" />
+          <input type="email" placeholder="Email" id="signupEmail" />
+          <input type="password" placeholder="Password" id="signupPassword" />
+          <select id="signupRole">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button id="signupSubmit">Register</button>
+          <button class="close">Close</button>
+        </div>
+      </div>
+
+      <div class="modal" id="loginModal">
+        <div class="modal-content">
+          <h2>Login</h2>
+          <input type="email" placeholder="Email" id="loginEmail" />
+          <input type="password" placeholder="Password" id="loginPassword" />
+          <button id="loginSubmit">Login</button>
+          <button class="close">Close</button>
+        </div>
+      </div>
 
       <section class="view-1">
         <div class="text">
@@ -69,19 +58,16 @@
           <h6>
             SkillBridge helps you find people who teach the skills you want, and
             learn the skills you need — for free.
-            
           </h6>
           <span id="usernameGreet"></span>
-<a id="createProfileBtn" href="src/pages/create-profile.html" style="display: none;">
-  <button class="create-profile-btn">Create Profile</button>
-</a>
+          <a id="createProfileBtn" href="src/pages/create-profile.html" style="display: none;">
+            <button class="create-profile-btn">Create Profile</button>
+          </a>
         </div>
         <div class="video">
           <video autoplay loop muted src="src/assets/HeroVideo.mp4"></video>
         </div>
       </section>
-
-      <hr />
 
       <section class="view-2" id="services">
         <div class="top-heading">
@@ -89,55 +75,32 @@
           <h1>How SkillBridge works in 3 simple steps</h1>
           <button onclick="window.location.href='#create'">GET STARTED</button>
         </div>
-
-        <hr />
         <div class="bottom-heading">
           <div class="elem">
             <img src="https://i.pinimg.com/1200x/cf/55/3b/cf553bbd00c1b4cb40fec0bd73279821.jpg" alt="Create Profile" />
             <h1>Create Profile</h1>
-            <p>
-              Share what skills you offer, what you want to learn, and when
-              you're available.
-            </p>
+            <p>Share what skills you offer, what you want to learn, and when you're available.</p>
           </div>
-
-          <hr />
-
           <div class="elem">
             <img src="https://i.pinimg.com/736x/f8/0b/d9/f80bd98c23790d670c613bf95bf8d8dd.jpg" alt="Find a Match" />
             <h1>Find a Match</h1>
-            <p>
-              Search for people who want what you offer and offer what you need.
-            </p>
+            <p>Search for people who want what you offer and offer what you need.</p>
           </div>
-
-          <hr />
-
           <div class="elem">
             <img src="https://i.pinimg.com/736x/bf/c3/7f/bfc37f68d4e01b66b3fe16c670d70e85.jpg" alt="Swap Skills" />
             <h1>Swap Skills</h1>
-            <p>
-              Send a request, accept a swap, and learn together. Everyone wins.
-            </p>
+            <p>Send a request, accept a swap, and learn together. Everyone wins.</p>
           </div>
         </div>
       </section>
-
-      <hr />
 
       <section class="view-3" id="feedback">
         <div class="text">
           <p>FEEDBACK</p>
           <h1>Share your learning experience</h1>
         </div>
-        <hr />
-        <h2>
-          Rate your swap partner and help make the community stronger and more
-          trustworthy.
-        </h2>
+        <h2>Rate your swap partner and help make the community stronger and more trustworthy.</h2>
       </section>
-
-      <hr />
 
       <section class="view-4" id="about">
         <div class="leftside">
@@ -148,12 +111,8 @@
             <div class="elem">
               <img src="https://i.pinimg.com/736x/74/d6/24/74d6244d4a168d0aa237ce4f8dc265af.jpg" alt="" />
               <h1>COMMUNITY DRIVEN</h1>
-              <p>
-                100% peer-to-peer. No fees, no hidden agendas — just pure
-                learning.
-              </p>
+              <p>100% peer-to-peer. No fees, no hidden agendas — just pure learning.</p>
             </div>
-            <hr />
             <div class="elem">
               <img src="https://i.pinimg.com/736x/e6/94/b5/e694b52fc9e91f801de94f32e49c6ecf.jpg" alt="" />
               <h1>SMART MATCHING</h1>
@@ -164,13 +123,8 @@
             <div class="elem">
               <img src="https://i.pinimg.com/1200x/b3/6d/45/b36d45d02420853b8aa6231715b0aeeb.jpg" alt="" />
               <h1>SAFE & PRIVATE</h1>
-              <p>
-                Your profile can stay public or private — it’s totally your
-                choice.
-              </p>
+              <p>Your profile can stay public or private — it’s totally your choice.</p>
             </div>
-            <hr />
-
             <div class="elem">
               <img src="https://i.pinimg.com/736x/14/ae/d5/14aed5dab70985122fba778ff686b799.jpg" alt="" />
               <h1>TRULY GLOBAL</h1>
@@ -179,8 +133,6 @@
           </div>
         </div>
       </section>
-
-      <hr />
 
       <footer>
         <div class="fylla">
