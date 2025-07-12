@@ -357,13 +357,33 @@ footer .row {
         text-decoration: none;
     }
 
-    nav .links button {
+    nav .links .buttons {
+        display: flex;
+        gap: .2rem;
+    }
+
+    nav .links .buttons .signup {
+        cursor: pointer;
+        font-size: 1.2rem;
+        border: none;
+        color: rgb(0, 0, 0);
+        text-wrap: nowrap;
+    }
+
+    nav .links .buttons .login {
+        cursor: pointer;
         color: white;
         background-color: black;
-        border-radius: 10px;
-        margin-right: 2rem;
-        padding: 1rem 4rem;
+        border-radius: 25px;
+        /* margin-right: 1rem; */
+        padding: 1rem 3rem;
         text-wrap: nowrap;
+        transition: all 0.3s ease;
+    }
+
+    nav .links .login:hover {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.8);
     }
 }
 
