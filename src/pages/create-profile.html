@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Profile</title>
+  <link rel="stylesheet" href="../styles/create-profile.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h2>Create Your Profile</h2>
+      <p>Fill in your details to get started. You can skip optional fields and edit later.</p>
+    </div>
+    <div class="right">
+      <form id="profileForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" placeholder="Enter your full name" id="fullName" required />
+
+        <label for="location">Location (optional)</label>
+        <input type="text" placeholder="Enter your location" id="location" />
+
+        <label for="email">Email (optional)</label>
+        <input type="email" placeholder="Enter your email" id="email" />
+
+        <label for="photo">Profile Photo (optional)</label>
+        <input type="file" id="photo" accept="image/*" />
+
+        <label for="skillsOffered">Skills You Can Teach</label>
+        <input type="text" placeholder="Enter skills you can teach" id="skillsOffered" required />
+
+        <label for="skillsWanted">Skills You Want to Learn</label>
+        <input type="text" placeholder="Enter skills you want to learn" id="skillsWanted" required />
+
+        <label for="availability">Availability</label>
+        <input type="text" placeholder="Enter your availability" id="availability" required />
+
+        <div class="checkbox-container">
+          <input type="checkbox" id="publicProfile" />
+          <label for="publicProfile">Make Profile Public</label>
+        </div>
+
+        <label for="bio">Short Bio (optional)</label>
+        <textarea id="bio" rows="2" placeholder="Tell us about yourself..."></textarea>
+
+        <button type="submit">Create Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../scripts/create-profile.js"></script>
+</body>
+</html>
