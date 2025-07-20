@@ -8,11 +8,6 @@
 
 🔗 **Live Preview**: [skill-swap-platform-omega.vercel.app](https://skill-swap-platform-omega.vercel.app/)
 
-
-### 📂 Demo Assets & Submission Files
-
-🔗 [Drive Folder](https://drive.google.com/file/d/1G_Dhid2oiMcnNce58ISN6vV81f7sKEUK/view?usp=sharing)
-
 ---
 
 Let me know if you'd like to auto-generate a **markdown**, `.pdf` version, or GitHub README with this included.
